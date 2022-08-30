@@ -1,0 +1,39 @@
+package Homework;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class FBErrorCSS {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		System.setProperty("webdriver.chrome.driver","./drivers/chromedriver.exe");
+		
+		 ChromeDriver driver = new ChromeDriver();
+		
+		driver.manage().window().maximize();
+		
+		driver.get("https://www.facebook.com/");
+		
+		driver.findElement(By.name("login")).click();
+		
+		Thread.sleep(1000);
+		
+		
+		String actualcolor="rgba(240,40,73)";
+		
+		String expectedcolor =driver.findElement(By.xpath("//div[@class='_9ay7']")).getCssValue("color");
+		
+		System.out.println(actualcolor);
+		
+		 if(actualcolor.equals(expectedcolor))
+			{
+				System.out.println("PASS: Color is same");
+			}
+			else
+			{
+				System.out.println("FAIL: Color is different");
+			}    
+			
+			
